@@ -1,7 +1,8 @@
 var http = require('http');
+var request = require('request');
 var req = function() {
     console.log('request now');
-     this.request = function(options, fun_back) {
+     this.http_request = function(options, fun_back) {
          var m_req = http.request(options, function(res) {
              console.log('SATUS:' + res.statusCode);
              console.log('HEADERS:' + JSON.stringify(res.headers));
@@ -26,6 +27,9 @@ var req = function() {
          m_req.end();
 
      }
+    this.do_get = function(option, fun_back) {
+        request.get()
+    }
 }
 
-exports.request = req;
+exports.http_request = req;

@@ -1,5 +1,5 @@
 var douban = function() {
-    this.get_book_index = {
+    this.book_index = {
         option: {
             hostname: 'book.douban.com',
             port: 80,
@@ -9,6 +9,7 @@ var douban = function() {
                 'Content-Type' : 'application/x-www-form-urlencoded'
             }
         },
+        url: 'book.douban.com',
         key_sort:{
             'title' : [
                 {
