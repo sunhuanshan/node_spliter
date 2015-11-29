@@ -6,7 +6,7 @@ var req = function() {
          var m_req = http.request(options, function(res) {
              console.log('SATUS:' + res.statusCode);
              console.log('HEADERS:' + JSON.stringify(res.headers));
-             res.setEncoding('utf8');
+             //res.setEncoding('utf8');
              var html = '';
              res.on('data', function(chunk) {
                  html += chunk;
@@ -26,10 +26,14 @@ var req = function() {
          // write data to request body
          m_req.end();
 
-     }
+     };
     this.do_get = function(option, fun_back) {
-        request.get()
-    }
+        request.get(options.url).on('response', function(error, response, body) {
+            if(!error && response.statusCode == 200) {
+                fun_back.call(this, body);
+            }
+        } );
+    };
 }
 
 exports.http_request = req;
