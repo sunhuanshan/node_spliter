@@ -12,6 +12,7 @@ var my_request = function(){
             var html = '';
             if (!error && response.statusCode == 200){
                 html =iconv.decode(body, 'GBK');
+                console.log(html);
             }
             if(html != '') {
                 fun_call_back.call(this, html);

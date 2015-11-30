@@ -3,11 +3,14 @@
 var my_request = require('../http_server/my_request').my_request;
 var env = require('jsdom').env;
 var query = require('jquery');
+var my_db_tool = require('./db_tool').db_tool;
 var spliter_tool = function() {
     this.spliter = function(web_site, call_back) {
+        var m_req = new my_request();
         //var m_req = new req();
         //var m_req = new https_req();
-        var m_req = new my_request();
+        var db_tool = new my_db_tool();
+        db_tool.get_order_ids(web_site.option);
         var params = {};
         params['options'] = web_site.option;
         params['encode'] = web_site.encode;
